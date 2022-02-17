@@ -28,38 +28,30 @@ app.get('/app/', (req, res) => {
 app.get('/app/flips/:number', (req, res) => {
     const raw = coinFlips(req.params.number)
     const summary = countFlips(raw);
-    res.json({raw, summary});
+    res.status(200).json({raw, summary});
+    res.type("text/plain")
 });
 
 app.get('/app/flip/', (req, res) => {
-    const flip = coinFlip(req.params.number)
-	//Some
-	//expressions
-	//go
-	//here
-	res.json({flip})
+  const flip = coinFlip(req.params.number)
+	res.status(200).json({flip})
+  res.type("text/plain")
 });
 
 app.get('/app/flip/call/heads', (req, res) => {
-    flips = flipACoin("heads")
-	//Some
-	//expressions
-	//go
-	//here
-	res.json(flips)
+  flips = flipACoin("heads")
+	res.status(200).json(flips)
+  res.type("text/plain")
 });
 
 app.get('/app/flip/call/tails', (req, res) => {
-    flips = flipACoin("tails")
-	//Some
-	//expressions
-	//go
-	//here
-	res.json(flips)
+  flips = flipACoin("tails")
+	res.status(200).json(flips)
+  res.type("text/plain")
 });
 
 app.use(function(req, res){
-    res.status(404).send('404 NOT FOUND')
+  res.status(404).send('404 NOT FOUND')
 	res.type("text/plain")
 });
 
